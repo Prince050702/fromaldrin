@@ -1,0 +1,120 @@
+body {
+    background-color: #ececec;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 0;
+}
+/* H1 styles */
+h1 {
+    position: absolute; /* Position it absolutely for better control */
+    top: 10%;         /* Adjust top value as needed */
+    left: 50%;
+             /* Center horizontally */
+    transform: translateX(-50%); /* Center text properly */
+    color: #333;       /* Text color */
+    z-index: 100;      /* Ensure it's on top of other elements */
+    font-size: 24px;   /* Font size */
+    text-align: center; /* Center the text */
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: white background with some transparency */
+    padding: 10px;     /* Padding for aesthetics */
+    border-radius: 8px; /* Rounded corners for aesthetics */
+}
+
+
+.collage {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('txs.jpg'); /* Your grid background here */
+    background-size: cover;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center;     /* Center content vertically */
+    flex-direction: column;  /* Stack the papers vertically */
+}
+
+/* Paper styles */
+.paper {
+    position: absolute;
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #ddd;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: grab;
+    width: 200px;
+    z-index: 1; /* Base z-index for all papers */
+    background-image: url('grind_paper.jpg'); /* Add paper-like texture */
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+    text-align: center;
+}
+
+
+.paper img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 10px;
+}
+
+.paper p {
+    font-size: 16px;
+    margin: 0;
+}
+
+.paper span {
+    font-size: 18px;
+    color: red;
+}
+/* General styles for the envelope */
+.envelope {
+    position: absolute;
+    bottom: 100%; /* Adjust position as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 220px; /* Width of the envelope */
+    height: 150px; /* Height of the envelope */
+    cursor: pointer;
+    perspective: 1000px; /* Add perspective for 3D effect */
+    text-align: center; /* Center text inside */
+    display: flex;
+    flex-direction: column; /* Stack the content vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+/* Styles for the closed envelope */
+.closed-envelope {
+    width: 100%; /* Full width for closed envelope */
+    display: block; /* Show closed envelope */
+}
+
+/* Styles for the opened envelope */
+.open-envelope {
+    width: 100%; /* Full width for opened envelope */
+    display: none; /* Initially hidden */
+}
+
+/* Styles for the hidden message */
+.hidden-message {
+    display: none; /* Hidden by default */
+    font-size: 16px; /* Font size for the message */
+    margin-top: 10px; /* Spacing above the message */
+    color: #ff0000; /* Red color for the message */
+}
+
+/* Show the hidden message when the envelope is open */
+.envelope.open .hidden-message {
+    display: block; /* Show when opened */
+}
+
+/* Animation for envelope opening */
+.envelope.open .closed-envelope {
+    display: none; /* Hide closed envelope when open */
+}
+
+.envelope.open .open-envelope {
+    display: block; /* Show opened envelope when open */
+}

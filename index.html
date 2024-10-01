@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable Motivational Collage</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="collage">
+        <h1>Drag the papers to move!</h1>
+        <!-- Centered message paper -->
+        <div class="paper" id="paper5" draggable="true" ondragend="checkPapers()">
+            <p>enjoy every single hour!</p>
+            <img src="cat5.gif" alt="Motivation 4">
+        </div>
+
+        <!-- Motivational Papers -->
+        <div class="paper" id="paper" draggable="true" ondragend="checkPapers()">
+          
+            <p>Your dreams are within reach! <span>💭</span></p>
+            <img src="cat4.gif" alt="Motivation 4">
+        </div>
+        <div class="paper" id="paper2" draggable="true" ondragend="checkPapers()">
+            
+            <p>Keep pushing forward! <span>🏃‍♀️</span></p>
+            <img src="cat3.gif" alt="Motivation 3">
+        </div>
+        <div class="paper" id="paper3" draggable="true" ondragend="checkPapers()">
+            <p>You're capable of amazing things <span>🌟</span></p>
+            <img src="cat2.gif" alt="Motivation 2">
+        </div>
+        <div class="paper" id="paper4" draggable="true" ondragend="checkPapers()">
+            <p>Believe in yourself! <span>💪</span></p>
+            <img src="cat1.gif" alt="Motivation 1">
+        </div>
+        
+
+        <!-- Envelope for the sweet message, hidden initially -->
+        <div class="envelope" id="envelope" onclick="openEnvelope()">
+            <img src="open.jpg" alt="Closed Envelope" class="closed-envelope">
+            <img src="" alt="Opened Envelope" class="open-envelope">
+            <p class="hidden-message" style="background-color: aliceblue;">You are truly special, and I cherish every moment with you! ❤️</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
