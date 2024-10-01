@@ -4,6 +4,7 @@ let papersDragged = 0;
 
 // Add event listeners for each paper
 papers.forEach(paper => {
+    paper.setAttribute('draggable', true); // Ensure papers are draggable
     paper.addEventListener('dragstart', dragStart);
     paper.addEventListener('dragend', dragEnd);
 });
@@ -24,25 +25,27 @@ function dragEnd(e) {
 // Allow dropping on the collage
 document.querySelector('.collage').addEventListener('dragover', (e) => {
     e.preventDefault(); // Allow drop
-    const id = e.dataTransfer.getData('text/plain'); // Use 'text/plain' to get the id
-    const paper = document.getElementById(id);
-    
-    // Position the paper while dragging
-    paper.style.position = 'absolute'; // Ensure it can be positioned
-    paper.style.top = `${e.clientY - 50}px`;
-    paper.style.left = `${e.clientX - 100}px`;
 });
 
 // Check when papers are dropped
-papers.forEach(paper => {
-    paper.addEventListener('dragend', checkPapers);
+document.querySelector('.collage').addEventListener('drop', (e) => {
+    e.preventDefault(); // Prevent default behavior
+    const id = e.dataTransfer.getData('text/plain'); // Use 'text/plain' to get the id
+    const paper = document.getElementById(id);
+    
+    // Position the paper where it was dropped
+    paper.style.position = 'absolute'; // Ensure it can be positioned
+    paper.style.top = ${e.clientY - 50}px; // Adjust based on cursor position
+    paper.style.left = ${e.clientX - 100}px; // Adjust based on cursor position
+
+    checkPapers(); // Check if the papers have been dragged
 });
 
 // Function to check if the papers are dragged
 function checkPapers() {
     papersDragged++;
 
-    // Check if all papers have been dragged (counting 5 papers)
+    // Check if all papers have been dragged (counting all papers)
     if (papersDragged >= papers.length) {
         showEnvelope(); // Show the envelope when all papers are dragged
     }
