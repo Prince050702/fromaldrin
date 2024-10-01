@@ -33,13 +33,15 @@ document.querySelector('.collage').addEventListener('drop', (e) => {
     const id = e.dataTransfer.getData('text/plain'); // Retrieve the id
     const paper = document.getElementById(id);
     
-    if (paper) { // Check if paper exists
+    if (paper) { // Ensure the paper exists before attempting to modify
         // Position the paper where it was dropped
         paper.style.position = 'absolute'; // Ensure it can be positioned
         paper.style.top = `${e.clientY - 50}px`; // Adjust based on cursor position
         paper.style.left = `${e.clientX - 100}px`; // Adjust based on cursor position
 
         checkPapers(); // Check if the papers have been dragged
+    } else {
+        console.error(`Paper with id "${id}" not found.`);
     }
 });
 
@@ -56,17 +58,25 @@ function checkPapers() {
 // Function to show the envelope
 function showEnvelope() {
     const envelope = document.getElementById("envelope");
-    envelope.style.display = "block"; // Reveal the envelope
-    envelope.style.position = "absolute"; // Ensure it's positioned
-    envelope.style.left = "50%"; // Center the envelope
-    envelope.style.top = "50%";
-    envelope.style.transform = "translate(-50%, -50%)"; // Center it
+    if (envelope) { // Ensure the envelope exists
+        envelope.style.display = "block"; // Reveal the envelope
+        envelope.style.position = "absolute"; // Ensure it's positioned
+        envelope.style.left = "50%"; // Center the envelope
+        envelope.style.top = "50%";
+        envelope.style.transform = "translate(-50%, -50%)"; // Center it
+    } else {
+        console.error('Envelope element not found.');
+    }
 }
 
 // Function to open the envelope
 function openEnvelope() {
     const envelope = document.getElementById("envelope");
-    envelope.classList.add("open");
+    if (envelope) {
+        envelope.classList.add("open");
+    } else {
+        console.error('Envelope element not found.');
+    }
 }
 
 // Bring paper5 to the front when dragged
