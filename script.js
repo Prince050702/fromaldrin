@@ -11,7 +11,7 @@ papers.forEach(paper => {
 
 // Drag start event
 function dragStart(e) {
-    e.dataTransfer.setData('text/plain', e.target.id);
+    e.dataTransfer.setData('text/plain', e.target.id); // Store the paper's id
     setTimeout(() => {
         e.target.style.visibility = 'hidden'; // Hide the paper while dragging
     }, 0);
@@ -27,18 +27,20 @@ document.querySelector('.collage').addEventListener('dragover', (e) => {
     e.preventDefault(); // Allow drop
 });
 
-// Check when papers are dropped
+// Handle drop event
 document.querySelector('.collage').addEventListener('drop', (e) => {
     e.preventDefault(); // Prevent default behavior
-    const id = e.dataTransfer.getData('text/plain'); // Use 'text/plain' to get the id
+    const id = e.dataTransfer.getData('text/plain'); // Retrieve the id
     const paper = document.getElementById(id);
     
-    // Position the paper where it was dropped
-    paper.style.position = 'absolute'; // Ensure it can be positioned
-    paper.style.top = ${e.clientY - 50}px; // Adjust based on cursor position
-    paper.style.left = ${e.clientX - 100}px; // Adjust based on cursor position
+    if (paper) { // Check if paper exists
+        // Position the paper where it was dropped
+        paper.style.position = 'absolute'; // Ensure it can be positioned
+        paper.style.top = `${e.clientY - 50}px`; // Adjust based on cursor position
+        paper.style.left = `${e.clientX - 100}px`; // Adjust based on cursor position
 
-    checkPapers(); // Check if the papers have been dragged
+        checkPapers(); // Check if the papers have been dragged
+    }
 });
 
 // Function to check if the papers are dragged
